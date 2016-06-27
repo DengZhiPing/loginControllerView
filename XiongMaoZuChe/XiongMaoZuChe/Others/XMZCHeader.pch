@@ -1,0 +1,18 @@
+//
+//  XMZCHeader.pch
+//  XiongMaoZuChe
+//
+//  Created by dengzhiping on 16/6/27.
+//  Copyright © 2016年 dengzhiping. All rights reserved.
+//
+
+#ifndef XMZCHeader_pch
+#define XMZCHeader_pch
+
+#define KScreen_W [UIScreen mainScreen].bounds.size.width
+#define KScreen_H [UIScreen mainScreen].bounds.size.height
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* XMZCHeader_pch */
