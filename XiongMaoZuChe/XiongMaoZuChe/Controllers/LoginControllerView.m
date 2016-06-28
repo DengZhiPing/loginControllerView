@@ -9,7 +9,14 @@
 #import "LoginControllerView.h"
 #import "PureLayout.h"
 
+typedef NS_ENUM(NSUInteger,LoginTextFieldType) {
+    loginTextFieldPhoneNumber,
+    loginTextFieldPasswordNumber
+};
+
 #define Login_Padding 74
+#define NUMBER @"0123456789"
+#define NUMBERS @"qazwsxedcrfvtgbyhnujmikolpQAZWSXEDCRFVTGBYHNUJMIKOLP0123456789"
 
 @interface LoginControllerView ()<UITextFieldDelegate>
 @property (nonatomic, strong) UIImageView *backGroundView;
@@ -115,6 +122,8 @@
 - (void)loginButtonPress :(UIButton *)sender {
     
     NSLog(@"点击登录按钮");
+    //显示密码
+    _passWordTextField.secureTextEntry = !_passWordTextField.isSecureTextEntry;
 }
 - (void)registButtonPress :(UIButton *)sender {
     NSLog(@"点击注册按钮");
@@ -124,6 +133,100 @@
     NSLog(@"点击忘记密码按钮");
 
 }
+- (void)textFieldDidChange:(UITextField *)textField {
+    
+    switch (textField.tag) {
+        case loginTextFieldPhoneNumber:{
+            NSLog(@"loginTextFieldPhoneNumber");
+            if (textField.text.length > 11) {
+                textField.text = [textField.text substringToIndex:11];
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                message:@"输入正确的手机号码!"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil];
+                [alert show];
+            }
+        }
+            break;
+            
+        case loginTextFieldPasswordNumber:{
+            NSLog(@"loginTextFieldPasswordNumber");
+            _loginButton.userInteractionEnabled = YES;
+            _loginButton.alpha = 1.0f;
+            if (textField.text.length > 20) {
+                textField.text = [textField.text substringToIndex:20];
+                UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                                message:@"最多输入20位!"
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"确定"
+                                                      otherButtonTitles:nil];
+                [alert show];
+
+            }
+        }
+            break;
+        default:
+            break;
+    }
+}
+//限制textField输入内容
+- (BOOL)textField:(UITextField*)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString*)string
+{
+    switch (textField.tag) {
+        case loginTextFieldPhoneNumber:
+        {
+            NSCharacterSet*cs;
+            cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBER] invertedSet];
+            NSString*filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+            BOOL basicTest = [string isEqualToString:filtered];
+            
+            if(!basicTest) {
+                
+               UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                               message:@"请输入数字"
+                                                              delegate:nil
+                                                     cancelButtonTitle:@"确定"
+                                                     otherButtonTitles:nil];
+                
+                [alert show];
+                return NO;
+            }
+            return YES;
+            
+        }
+            break;
+            
+        case loginTextFieldPasswordNumber:
+        {
+            NSCharacterSet*cs;
+            cs = [[NSCharacterSet characterSetWithCharactersInString:NUMBERS] invertedSet];
+            NSString*filtered = [[string componentsSeparatedByCharactersInSet:cs] componentsJoinedByString:@""];
+            BOOL basicTest = [string isEqualToString:filtered];
+            
+            if(!basicTest) {
+                
+               UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"提示"
+                                                               message:@"只能输入字母和数字组合"
+                                                              delegate:nil
+                                                     cancelButtonTitle:@"确定"
+                                                     otherButtonTitles:nil];
+                
+                [alert show];
+                return NO;
+            }
+            return YES;
+            
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    return YES;
+}
+
 #pragma mark - Delegate
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event{
@@ -170,6 +273,7 @@
     
     return YES;
 }
+
 
 #pragma mark -LazyLoad
 - (UIImageView *)backGroundView {
@@ -221,6 +325,8 @@
         [_photoTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         [_photoTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         _photoTextField.keyboardType = UIKeyboardTypeNumberPad;
+        _photoTextField.tag = loginTextFieldPhoneNumber;
+        [_photoTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     }
     return _photoTextField;
 }
@@ -253,6 +359,10 @@
         [_passWordTextField setValue:[UIColor whiteColor] forKeyPath:@"_placeholderLabel.textColor"];
         [_passWordTextField setValue:[UIFont systemFontOfSize:14] forKeyPath:@"_placeholderLabel.font"];
         _passWordTextField.keyboardType = UIKeyboardTypeASCIICapable;
+        [_passWordTextField setSecureTextEntry: YES];
+        _passWordTextField.tag = loginTextFieldPasswordNumber;
+        [_passWordTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+        
     }
     return _passWordTextField;
 }
@@ -271,7 +381,8 @@
         [_loginButton setTitle:@"登录" forState:0];
         [_loginButton setBackgroundImage:[UIImage imageNamed:@"login"] forState:0];
         [_loginButton addTarget:self action:@selector(loginButtonPress:) forControlEvents:UIControlEventTouchDown];
-        
+        _loginButton.alpha = 0.4;
+        _loginButton.userInteractionEnabled = NO;
     }
     return _loginButton;
 }
