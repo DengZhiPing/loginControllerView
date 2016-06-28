@@ -59,15 +59,32 @@ typedef NS_ENUM(NSUInteger,LoginTextFieldType) {
     [self.backGroundView addSubview:self.line1View];
     
     [self.backGroundView addSubview:self.photoImgView];
-    [_photoImgView autoPinEdge:ALEdgeLeft toEdge:ALEdgeLeft ofView:self.view withOffset:20.0];
-    [_photoImgView autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_line1View withOffset:20.0];
+    [_photoImgView autoPinEdge:ALEdgeLeft
+                        toEdge:ALEdgeLeft
+                        ofView:self.view
+                    withOffset:20.0];
+    [_photoImgView autoPinEdge:ALEdgeTop
+                        toEdge:ALEdgeBottom
+                        ofView:_line1View
+                    withOffset:20.0];
+    
     [_photoImgView autoSetDimension:ALDimensionWidth toSize:17.0];
     [_photoImgView autoSetDimension:ALDimensionHeight toSize:24.0];
     
     [self.backGroundView addSubview:self.photoTextField];
-    [_photoTextField autoPinEdge:ALEdgeLeft toEdge:ALEdgeRight ofView:_photoImgView withOffset:10.0];
-    [_photoTextField autoPinEdge:ALEdgeTop toEdge:ALEdgeBottom ofView:_line1View withOffset:22.0];
-    [_photoTextField autoPinEdge:ALEdgeRight toEdge:ALEdgeRight ofView:self.view withOffset:-20.0];
+    [_photoTextField autoPinEdge:ALEdgeLeft
+                          toEdge:ALEdgeRight
+                          ofView:_photoImgView
+                      withOffset:10.0];
+    
+    [_photoTextField autoPinEdge:ALEdgeTop
+                          toEdge:ALEdgeBottom
+                          ofView:_line1View
+                      withOffset:22.0];
+    [_photoTextField autoPinEdge:ALEdgeRight
+                          toEdge:ALEdgeRight
+                          ofView:self.view
+                      withOffset:-20.0];
     [_photoTextField autoSetDimension:ALDimensionHeight toSize:24.0];
     
     [self.backGroundView addSubview:self.lineView];
@@ -162,7 +179,7 @@ typedef NS_ENUM(NSUInteger,LoginTextFieldType) {
                                                       cancelButtonTitle:@"确定"
                                                       otherButtonTitles:nil];
                 [alert show];
-
+                
             }
         }
             break;

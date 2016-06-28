@@ -17,6 +17,7 @@
 		E081FFE71D20B85D00F1542B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E081FFE51D20B85D00F1542B /* Main.storyboard */; };
 		E081FFEC1D20B85D00F1542B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E081FFEA1D20B85D00F1542B /* LaunchScreen.storyboard */; };
 		E081FFFB1D20BA1200F1542B /* LoginControllerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E081FFFA1D20BA1200F1542B /* LoginControllerView.m */; };
+		E0A150631D224FE60031536F /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E0A150621D224FE60031536F /* RootViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,8 @@
 		E081FFF91D20BA1200F1542B /* LoginControllerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginControllerView.h; sourceTree = "<group>"; };
 		E081FFFA1D20BA1200F1542B /* LoginControllerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginControllerView.m; sourceTree = "<group>"; };
 		E081FFFF1D20BCC300F1542B /* ALView+PureLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ALView+PureLayout.h"; sourceTree = "<group>"; };
+		E0A150611D224FE60031536F /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RootViewController.h; sourceTree = "<group>"; };
+		E0A150621D224FE60031536F /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RootViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +94,8 @@
 				E081FFF71D20B9CA00F1542B /* Units */,
 				E081FFDF1D20B85D00F1542B /* AppDelegate.h */,
 				E081FFE01D20B85D00F1542B /* AppDelegate.m */,
+				E0A150611D224FE60031536F /* RootViewController.h */,
+				E0A150621D224FE60031536F /* RootViewController.m */,
 				E081FFE21D20B85D00F1542B /* ViewController.h */,
 				E081FFE31D20B85D00F1542B /* ViewController.m */,
 				E08101BD1D20CEF400F1542B /* Images.xcassets */,
@@ -243,6 +248,7 @@
 			files = (
 				E081000A1D20BCC300F1542B /* NSLayoutConstraint+PureLayout.m in Sources */,
 				E081FFFB1D20BA1200F1542B /* LoginControllerView.m in Sources */,
+				E0A150631D224FE60031536F /* RootViewController.m in Sources */,
 				E081FFE41D20B85D00F1542B /* ViewController.m in Sources */,
 				E081FFE11D20B85D00F1542B /* AppDelegate.m in Sources */,
 				E08100081D20BCC300F1542B /* ALView+PureLayout.m in Sources */,
