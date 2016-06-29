@@ -21,6 +21,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     LoginControllerView *login = [[LoginControllerView alloc]init];
     self.window.rootViewController = login;
+
     [self.window makeKeyAndVisible];
     return YES;
 }
